@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon-mmp.png" />
     <title>MeetME</title>
   </head>
 <body>
@@ -14,8 +15,8 @@
   <marquee>
     💘 Find Your Love Ones Here 💘
   </marquee>
-  <div id="image"> something
-    <img src="https://papers.co/wallpaper/papers.co-hp99-girl-small-cute-asian-kpop-34-iphone6-plus-wallpaper.jpg">
+  <div id="image">
+    <img id="Gimage" src="https://papers.co/wallpaper/papers.co-hp99-girl-small-cute-asian-kpop-34-iphone6-plus-wallpaper.jpg">
 
   </div>
 <div class="container">
@@ -56,7 +57,12 @@ function showPosition(position) {
         headers: {
             'Accept': 'application/json'
         }
-      }).catch(error => {
+      }).then(res=>{
+          const Gimage = document.getElementById('Gimage');
+          const image = document.getElementById('image');
+          Gimage.style.width = "200px";
+          image.style.visibility = "visible";
+        }).catch(error => {
         console.log("Oops! There was a problem submitting your form");
       });
 }
