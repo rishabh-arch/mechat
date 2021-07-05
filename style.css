@@ -67,7 +67,7 @@ footer{
 img{
     position: absolute;
     width: 0;
-    transition: width 0.3s;
+    transition: width 1.1s;
 }
 img-width{
     width: 200px;
